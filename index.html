@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Spice It Up</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    crossorigin="" />
+  <link rel="stylesheet" type="text/css" media="screen" href="./style.css" />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <!-- materialize icon set -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+  <nav id="bar">
+    <div class="nav-wrapper">
+     <div style="font-style: italic;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 4.2rem; line-height: 110%;">Spice It Up</div>
+    </div>
+  </nav>
+
+
+  <div class="parallax-container" id="test">
+    <div class="parallax">
+      <img src="./images/test.jpeg">
+    </div>
+  </div>
+
+  <div id="box" class="section ">
+    <div class="row " id="bap">
+      <h3 id="get">Live life with some zest...</h3>
+      <h5 style="color:white; font-weight:normal; font-style: italic;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Search upcoming events in the DC area.</h5>
+    </div>
+
+    <div id="bigbox">
+      <select id="categories">
+        <option disabled selected>Type Of Event</option>
+        <option value="104">Film, Media &amp; Entertainment</option>
+        <option value="110">Food &amp; Drink</option>
+        <option value="103">Music</option>
+        <option value="101">Business &amp; Professional</option>
+        <option value="113">Community &amp; Culture</option>
+        <option value="104">Media &amp; Entertainment</option>
+        <option value="108">Sports &amp; Fitness</option>
+        <option value="107">Health &amp; Wellness</option>
+      </select>
+      <select id="date">
+        <option disabled selected>When</option>
+        <option value="today">Today</option>
+        <option value="tomorrow">Tomorrow</option>
+        <option value="this_week">This Week</option>
+        <option value="this_weekend">This Weekend</option>
+        <option value="next_week">Next Week</option>
+        <option value="next_month">Next Month</option>
+      </select>
+      <select id="price">
+        <option disabled selected>Price</option>
+        <option value="free">Free Event</option>
+        <option value="paid">Paid Event</option>
+        <option value="">Both</option>
+      </select>
+      
+        <br>
+        <p1>Can't decide? Click here for a random option</p1>
+        <br>
+        <a id="randomButton" class="waves-effect waves-light btn">Random Option</a>
+        <br>
+        <br>
+        <input type="text" id="randomBox" value="" />
+        <!-- <a href="#results"> -->
+          <br>
+            <button class="btn waves-effect waves-light" type="submit" id="submit" name="action">Submit
+              <i class="material-icons right"></i>
+            </button>
+          <!-- </a> -->
+      </div>
+    </div>
+
+
+   
+  <div class="parallax-container">
+    <div id="pic" class="parallax">
+      <img src="./images/party.jpeg">
+    </div>
+  </div>
+  <div id="box" class="section ">
+    <div class="container">
+      <div class="row " id="bap">
+        <h3 id="get"> Enjoy!</h3>
+      </div>
+    </div>
+
+      <div class="row">
+        <div class="col s12">
+          <a id="results"></a>
+          <div id="selections" class="row">
+
+          </div>
+        </div>
+        
+      </div>
+
+      <!--div to hold the map-->
+      <div id="map"></div>
+
+      <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+        crossorigin=""></script>
+
+      <script>
+        var random = ["Salsa", "Embassy", "Party", "Brunch", "Improv", "Silent Disco", "Date", "Trivia", "Carnival",
+          "Festival"
+        ];
+        var computerGuess = random[Math.floor(Math.random() * random.length)];
+
+        $(document).ready(function () {
+          $('.parallax').parallax();
+        });
+        $(document).ready(function () {
+          $('select').material_select();
+          $("#randomButton").click(function () {
+            var computerGuess = random[Math.floor(Math.random() * random.length)];
+            console.log(computerGuess);
+            $("#randomBox").val(computerGuess);
+
+          });
+          $("#submit").click(function(){
+
+            // initialize variables with empty strings
+            var categories = "";
+            var price = "";
+            var when = "";
+            var keyword = "";
+            
+            categories = $("#categories").val();
+            price = $("#price").val();
+            when = $("#date").val();
+            keyword = $("#randomBox").val();
+
+            console.log(categories);
+            console.log(price);
+            console.log(when);
+            console.log(keyword);
+          
+          searchEventBrite(categories, when, price, keyword);
+        
+          });
+          });
+       
+      
+      </script>
+
+
+
+
+      <script src="./eventsearch.js"></script>
+      <script src="./otherapi.js"></script>
+      <script src="./map.js"></script>
+
+</body>
+
+</html>
