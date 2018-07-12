@@ -26,6 +26,11 @@ function searchEventBrite(category, date, price, keyword) {
           method: "GET"
         }).then(function(response) {
           console.log(response);
+
+          // if no results then print a message to that effect
+          if (response.events.length == 0) {
+            $("#enjoy-response").text("Sorry, we couldn't find anything - please try a different search.");
+          }
     
     // FOR loop- for each event result:
     for (let i = 0; i < response.events.length; i++) {
