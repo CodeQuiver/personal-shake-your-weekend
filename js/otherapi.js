@@ -1,3 +1,6 @@
+// TODO- re-do this section using the Dark Sky API's Time Machine function which will return answers for future dates, not only the current weather
+
+
 
 // var latitude = "-77.070503";
 // var longtitude= "38.930176";

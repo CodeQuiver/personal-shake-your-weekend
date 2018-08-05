@@ -1,3 +1,19 @@
+/* possible new color scheme: 
+(night-life style scheme)
+almost-black-navy background: 
+    #000018 [RGB: 0,0,24] 
+    (less-blue option: #010012) 
+    (more-blue option: #01001f)
+white text & boxes
+electric blue accents:
+    #0100e4 [RGB: 1,0,228]
+based on #60 color combo from color scheme inspiration website
+
+(may want alternate daytime color scheme)
+consider #64 of same schemes for a punchy, bright look (blue-teal, bright magenta)
+or #58 for extremely subtle daytime shades (pale blue, cream)
+*/
+
 #reset {
     display: none;
   }
